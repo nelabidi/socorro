@@ -1,3 +1,5 @@
+This Fork is to port socorro to windows 64 platform
+
 Socorro
 A server for collecting, processing, and displaying crash reports from
 clients using the [Breakpad libraries](http://code.google.com/p/google-breakpad/)
