@@ -19,6 +19,6 @@ django-waffle==0.9.1
 requests==0.13.0
 
 # compiled libs
-Jinja2==2.5.5
+Jinja2==2.7.2
 psycopg2==2.4.5
-py-bcrypt==0.3
+py-bcrypt==0.4

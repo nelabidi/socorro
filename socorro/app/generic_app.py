@@ -7,7 +7,6 @@ import os
 import re
 import inspect
 import threading
-import logging
 import logging.handlers
 import functools
 import signal
@@ -288,18 +287,22 @@ def _do_main(
         return code
 
     with config_manager.context() as config:
+        
         #config.logger.config = config
         config.executor_identity = lambda: threading.currentThread().getName()
         config_manager.log_config(config.logger)
 
-        # install the signal handler for SIGHUP to be the action defined in
-        # 'respond_to_SIGHUP'
-        respond_to_SIGHUP_with_logging = functools.partial(
-            respond_to_SIGHUP,
-            logger=config.logger
-        )
-        signal.signal(signal.SIGHUP, respond_to_SIGHUP_with_logging)
-
+        try:
+            # install the signal handler for SIGHUP to be the action defined in
+            # 'respond_to_SIGHUP'
+            respond_to_SIGHUP_with_logging = functools.partial(
+                respond_to_SIGHUP,
+                logger=config.logger
+            )
+            # signal.SIGHUP not implemented under windows
+            signal.signal(signal.SIGHUP, respond_to_SIGHUP_with_logging)
+        except AttributeError :
+            pass
 
         # get the app class from configman.  Why bother since we have it aleady
         # with the 'initial_app' name?  In most cases initial_app == app,

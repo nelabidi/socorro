@@ -43,7 +43,8 @@ hbase-thrift==0.20.4
 # sha256: YjGaw0shgNRQpNknhzyyYA88E7zmsgd83XcMd7Oph-E
 isodate==0.4.7
 # sha256: un_il03Cdt0bg-HEB9ZsetPuZDOPdT1PZXr8qWxJumw
-lxml==2.3.4
+#lxml==2.3.4
+lxml==3.3.5
 # sha256: jjAivJYKpdX8fUxWR4YIdpOhqZ8V4CWtkg_AqjeOHWc
 pgxnclient==1.2.1
 # sha256: Zm_VIvShBZ1bi0mW5Xb6eGL1BVKOEc8e9VRjEcYMPk0

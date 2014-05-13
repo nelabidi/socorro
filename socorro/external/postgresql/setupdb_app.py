@@ -274,7 +274,9 @@ class PostgreSQLAlchemyManager(object):
 
     # the version number is the second substring
     def version_number(self):
-        return self.version().split()[1]
+        result = self.session.execute("SHOW server_version")
+        version_num = result.fetchone()
+        return version_num["server_version"]
 
     # Parse the version as a tuple since the PG version string is "simple"
     # If we need a more "feature complete" version parser, we can use
